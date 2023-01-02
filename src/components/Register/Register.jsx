@@ -1,13 +1,15 @@
 import React from "react";
 
-const Login = () => {
+const Register = () => {
     return (
         <div>
             <div>
-                LOGIN
+                Register
+
             </div>
         </div>
-    );
-};
+    )
 
-export default Login;
+}
+
+export default Register
