@@ -6,15 +6,18 @@ import Menu from "./containers/Menu/Menu";
 import Profile from "./containers/ProfileView/Profile";
 import Balances from "./containers/BalancesView/Balances";
 import Transactions from "./containers/TransactionsView/Transactions";
-import Navbar from "./components/Navbar/Navbar";
 
 function App() {
   return (
     <div className="App">
       <BrowserRouter>
-        <Navbar />
         <Routes>
           <Route path="/welcome" element={<Welcome />} />
+        </Routes>
+      </BrowserRouter>
+
+      <BrowserRouter>
+        <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/menu" element={<Menu />} />
           <Route path="/profile" element={<Profile />} />
