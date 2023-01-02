@@ -1,0 +1,121 @@
+//Form Design Start
+
+@keyframes submitHoverStart {
+  from {
+    font-size: medium;
+    border: 2px solid white;
+  }
+  to {
+    border: 2px solid rgb(4, 255, 0);
+    font-size: larger;
+  }
+}
+@keyframes submitHoverEnd {
+  from {
+    font-size: larger;
+    border: 2px solid rgb(4, 255, 0);
+  }
+  to {
+    border: 2px solid white;
+    font-size: medium;
+  }
+}
+.formBox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 80vh;
+  width: 23vw;
+  margin: 1vh;
+  padding: 1vh;
+  color: white;
+  background-color: black;
+  border-radius: 0.2em;
+}
+
+.submitButton {
+  margin: 0.8vh 0;
+  padding: 1vh;
+  border: 2px solid rgb(255, 255, 255);
+  width: 5vw;
+  border-radius: 0.2em;
+  background-color: black;
+  color: white;
+  font-weight: 700;
+  animation: submitHoverEnd 0.5s;
+
+  -webkit-user-select: none; /* Safari */
+  -ms-user-select: none; /* IE 10 and IE 11 */
+  user-select: none; /* Standard syntax */
+}
+
+.submitButton:hover {
+  color: aqua;
+  cursor: pointer;
+  transform: rotate(-1deg);
+  font-size: larger;
+  border: 2px solid rgb(4, 255, 0);
+  animation: submitHoverStart 0.5s;
+
+  -webkit-user-select: none; /* Safari */
+  -ms-user-select: none; /* IE 10 and IE 11 */
+  user-select: none; /* Standard syntax */
+}
+
+.inputFormDesign {
+  width: 18vw;
+  height: 2.5vh;
+  margin: 0.5vh;
+}
+
+.formTitle {
+  font-weight: 700;
+  font-size: x-large;
+  margin-bottom: 3vh;
+
+  -webkit-user-select: none; /* Safari */
+  -ms-user-select: none; /* IE 10 and IE 11 */
+  user-select: none; /* Standard syntax */
+}
+.textDesign {
+  font-weight: 600;
+}
+
+.errorHandlerDesign {
+  color: red;
+  border-top: 1px solid red;
+  border-bottom: 1px solid red;
+  padding: 0.4em 0em;
+  align-items: center;
+  font-style: italic;
+  font-size: small;
+}
+
+//Form Design Ends
+
+@media screen and (max-width: 1025px) {
+  .formBox,
+  .submitButton,
+  .inputFormDesign,
+  .formTitle,
+  .errorHandlerDesign,
+  .submitButton,
+  .submitButton:hover {
+    width: 90%;
+    font-size: 160%;
+  }
+}
+@media screen and (max-width: 769px) {
+  .formBox,
+  .submitButton,
+  .inputFormDesign,
+  .formTitle {
+    width: 90%;
+  }
+}
+@media screen and (max-width: 769px) {
+  .submitButton {
+    width: 40%;
+  }
+}
