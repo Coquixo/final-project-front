@@ -16,34 +16,7 @@
 }
 
 .homeViewBox {
-  display: flex;
-  min-height: 100vh;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
   background-color: black;
-}
-
-.homeMainBox {
-  background-color: var(--formBackground);
-  height: 73vh;
-  width: 28vw;
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  align-items: center;
-  border: 3px white solid;
-}
-
-.homeFormBox {
-  background-color: white;
-  width: 24.8vw;
-  height: 60vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  border-radius: 0.3em;
 }
 
 .homeTitle {
@@ -57,13 +30,8 @@
 }
 
 .optionDesign {
-  margin-top: 1em;
-  width: 20vw;
-  border: 1px solid white;
-  padding: 0.7em;
-  background-color: black;
-  border-radius: 0.3em;
-  color: white;
+  background-color: black !important;
+
   cursor: pointer;
   animation: optionHoverEnd 0.5s;
 
@@ -75,33 +43,5 @@
 .optionDesign:hover {
   color: red;
   animation: optionHoverStart 0.5s;
-}
-@media screen and (max-width: 1025px) {
-  .homeMainBox,
-  .homeTitle,
-  .optionDesign {
-    width: 65%;
-    font-size: 200%;
-  }
-}
-@media screen and (max-width: 1025px) {
-  .homeTitle {
-    width: 100%;
-    font-size: 400%;
-  }
-}
-@media screen and (max-width: 1025px) {
-  .homeFormBox,
-  .homeMainBox {
-    font-size: 100%;
-    width: 90%;
-  }
-}
-@media screen and (max-width: 769px) {
-  .homeMainBox,
-  .homeFormBox,
-  .homeTitle,
-  .optionDesign {
-    width: 90%;
-  }
+  background-color: black;
 }

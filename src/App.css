@@ -3,10 +3,6 @@
   padding: 0;
 }
 
-:root {
-  --formBackground: rgb(255, 191, 0);
-}
-
 .App {
   text-align: center;
   min-height: 100vh;
