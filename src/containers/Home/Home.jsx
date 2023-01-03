@@ -27,27 +27,27 @@ const Home = () => {
     // );
 
     return (
-        <Container>
-            <Row>
-                <Col className="homeTitle bg-dark ">MJÖLNIR CAPITAL</Col>
+        <Container fluid >
+            <Row className="homeTitle bg-dark text-center">
+                <div>
+                    MJÖLNIR CAPITAL
+                </div>
             </Row>
-            <Row className="homeMainBox ">
-                <Col></Col>
-                <Col className=" bg-light " sm={12}>
-                    {loginForm ? <Login /> : <Register />}
+            <Row className="homeMainBox " >
+                <Col className="bg-dark" ></Col>
+                <Col className=" bg-light" sm={6}  >{loginForm ? <Login /> : <Register />}</Col>
+                <Col className="bg-dark"></Col>
+            </Row>
+            <Row className="bg-dark" >
+                <Col >
+                    <Button
+                        className="optionDesign my-2"
+                        onClick={() => setloginForm(!loginForm)}>
+                        {!loginForm ? message.register : message.login}
+                    </Button>
                 </Col>
-                <Col></Col>
-                <Row>
-                    <Col>
-                        <Button
-                            className="optionDesign mt-5"
-                            onClick={() => setloginForm(!loginForm)}>
-                            {!loginForm ? message.register : message.login}
-                        </Button>
-                    </Col>
-                </Row>
             </Row>
-        </Container>
+        </Container >
     );
 };
 

@@ -21,27 +21,31 @@ const Login = () => {
     // );
 
     return (
-        <Container className="  formBox ">
+        <Container className="formBox ">
             <Row>
-                <Col className="formTitle mt-4 mx-5 ">LOG IN</Col>
+                <Col></Col>
+                <Col className="formTitle mt-3 border-1 border border-dark   ">
+                    LOG IN
+                </Col>
+                <Col></Col>
             </Row>
             <Row>
-                <Form>
-                    <Form.Group className="my-4 mx-5">
-                        <Row>
+                <Col></Col>
+                <Col md={8}>
+                    <Form>
+                        <Form.Group className="m-4 ">
                             <Form.Label>Email</Form.Label>
-                            <Col>
-                                <Form.Control type="email" placeholder="Example@gmail.com" />
-                            </Col>
-                        </Row>
-                        <Form.Label>Password</Form.Label>
-                        <Form.Control type="password" placeholder="Enter password" />
-                        <Form.Text className="text-danger errorHandlerDesign ">
-                            Aqui van los errores
-                        </Form.Text>
-                    </Form.Group>
-                    <Button className="my-2 submitButton">SUBMIT</Button>
-                </Form>
+                            <Form.Control type="email" placeholder="Example@gmail.com" />
+                            <Form.Label>Password</Form.Label>
+                            <Form.Control type="password" placeholder="Enter password" />
+                            <Form.Text className="text-danger errorHandlerDesign ">
+                                Aqui van los errores
+                            </Form.Text>
+                        </Form.Group>
+                        <Button className="my-2 submitButton">SUBMIT</Button>
+                    </Form>
+                </Col>
+                <Col></Col>
             </Row>
         </Container>
     );
