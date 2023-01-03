@@ -11,20 +11,6 @@ const Home = () => {
         register: "Log an existing account",
     });
 
-    // return (
-
-    //     <div className="homeViewBox">
-    //         <div className="homeTitle">MJÖLNIR CAPITAL</div>
-    //         <div className="homeMainBox">
-    //             <div className="homeFormBox">
-    //                 {loginForm ? <Login /> : <Register />}
-    //             </div>
-    //             <Button className="optionDesign" variant="dark" onClick={() => setloginForm(!loginForm)}>
-    //                 {!loginForm ? message.register : message.login}</Button>
-
-    //         </div>
-    //     </div >
-    // );
 
     return (
         <Container fluid >
