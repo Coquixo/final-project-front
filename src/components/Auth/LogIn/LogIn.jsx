@@ -35,7 +35,7 @@ const Login = () => {
 
     const loginTry = () => {
         try {
-            loginUser(user);
+            let res = loginUser(user);
             setTimeout(() => {
                 navigate("/balances");
             }, 500);
