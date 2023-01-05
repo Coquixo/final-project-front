@@ -62,7 +62,7 @@ const Register = () => {
 
                 <Col md={8}>
                     <Form>
-                        <Form.Group className="m-4">
+                        <Form.Group className="m-2">
                             <Form.Label>Name</Form.Label>
                             <Form.Control
                                 type="text"
@@ -87,6 +87,8 @@ const Register = () => {
                                 type="number"
                                 placeholder=">18"
                                 name="age"
+                                min="0"
+                                max="150"
                                 onChange={inputHandler}
                                 onInput={(e) =>
                                     errorHandler(e.target.name, e.target.value, "age")
