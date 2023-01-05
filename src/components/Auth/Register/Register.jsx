@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Button, Col, Container, Form, Row } from "react-bootstrap";
 import "./Register.scss";
 import { useNavigate } from "react-router-dom";
-import { register } from "../../../services/apiCalls";
+import { registerApi } from "../../../services/apiCalls";
 import { errorCheck } from "../../../services/errorManage";
 
 const Register = () => {
@@ -38,7 +38,7 @@ const Register = () => {
     };
 
     const registerTry = async () => {
-        let res = await register(user);
+        let res = await registerApi(user);
         //Falta implementar el token.
 
         if (res.message == "User created successfully") {

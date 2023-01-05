@@ -1,12 +1,16 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Col, Container, Form, Row } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
 import { useNavigate } from "react-router-dom";
-import { login } from "../../../services/apiCalls";
+import { loginApi } from "../../../services/apiCalls";
 import { errorCheck } from "../../../services/errorManage";
+import { useDispatch, useSelector } from "react-redux";
+import { userData, login } from "../../../services/slices/userSlice";
 
 const Login = () => {
     const navigate = useNavigate();
+    const dispatch = useDispatch();
+    const userReduxCredentials = useSelector(userData)
     const [user, setUser] = useState({
         email: "",
         password: "",
@@ -33,14 +37,20 @@ const Login = () => {
         }));
     };
 
+    useEffect(() => {
+        if (userReduxCredentials.credentials.token !== undefined) {
+            navigate("/balances")
+        }
+    }, [])
+
     const loginTry = async () => {
-        let res = await login(user);
+        let res = await loginApi(user);
+        dispatch(login({ credentials: res }))
         setTimeout(() => {
             navigate("/balances");
         }, 500);
 
-        //aqui aun falta meter redux
-        // dispatch(login({ credentials: resultado.data }));
+
     };
 
     return (
