@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Col, Container, Form, Row } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
 import { useNavigate } from "react-router-dom";
-import { loginUser } from "../../../services/apiCalls";
+import { login } from "../../../services/apiCalls";
 import { errorCheck } from "../../../services/errorManage";
 
 const Login = () => {
@@ -34,12 +34,13 @@ const Login = () => {
     };
 
     const loginTry = () => {
-        try {
-            let res = loginUser(user);
-            setTimeout(() => {
-                navigate("/balances");
-            }, 500);
-        } catch (error) { }
+        let res = login(user);
+        setTimeout(() => {
+            navigate("/balances");
+        }, 500);
+
+        //aqui aun falta meter redux
+        // dispatch(login({ credentials: resultado.data }));
     };
 
     return (
@@ -61,7 +62,7 @@ const Login = () => {
                                 type="email"
                                 name="email"
                                 placeholder="Example@gmail.com"
-                                onChange={(e) => inputHandler(e)}
+                                onChange={inputHandler}
                                 onInput={(e) =>
                                     errorHandler(e.target.name, e.target.value, "text")
                                 }
@@ -71,13 +72,15 @@ const Login = () => {
                                 type="password"
                                 name="password"
                                 placeholder="Enter password"
-                                onChange={(e) => inputHandler(e)}
+                                onChange={inputHandler}
                                 onInput={(e) =>
                                     errorHandler(e.target.name, e.target.value, "password")
                                 }
                             />
                             <Form.Text className="text-danger errorHandlerDesign ">
-                                Aqui van los errores
+                                {userError.emailError}
+                                <br />
+                                {userError.passwordError}
                             </Form.Text>
                         </Form.Group>
                         <Button className="my-2 submitButton" onClick={() => loginTry()}>

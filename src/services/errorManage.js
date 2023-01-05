@@ -13,7 +13,7 @@ export const errorCheck = (value, type) => {
           value
         )
       ) {
-        return "Email incorrect format";
+        return "*Email incorrect format";
       } else {
         return "";
       }
@@ -25,14 +25,14 @@ export const errorCheck = (value, type) => {
 
     case "phone":
       if (!/(?=.*?[0-9])/.test(value)) {
-        return "Incorrect format, only numbers.";
+        return "*Incorrect format, only numbers.";
       } else {
         return "";
       }
 
     case "password":
       if (value.length < 7) {
-        return "Write at least 8 characters";
+        return "*Write at least 8 characters";
       } else {
         //Checking the password format....
 
@@ -44,7 +44,7 @@ export const errorCheck = (value, type) => {
       }
 
     case "credentials":
-      return "Wrong email or password";
+      return "*Wrong email or password";
     case "address":
       if (
         !/[a-zA-Z0-9]/gi.test(
@@ -57,7 +57,7 @@ export const errorCheck = (value, type) => {
       }
 
     default:
-      console.log("Some errors have not been taken into account");
+      console.log("*Some errors have not been taken into account");
 
       break;
   }
