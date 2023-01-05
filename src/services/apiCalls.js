@@ -45,7 +45,7 @@ export const updateProfile = async (email, user) => {
 //Delete a user
 //Email stands for what account we are deleting
 export const deleteUser = async (email) => {
-  let res = await axios.delete(`/${database}/${email}/delete`);
+  let res = await axios.delete(`${database}/${email}/delete`);
   return res.data;
 };
 
@@ -54,13 +54,13 @@ export const deleteUser = async (email) => {
 //Get balance from a wallet
 //User stands for UserId and Card for CardId (1 credit / 2 Debit)
 export const getWalletBalance = async (user, card) => {
-  let res = await axios.get(`/${database}/wallet/${user}/${card}`);
+  let res = await axios.get(`${database}/wallet/${user}/${card}`);
   return res.data;
 };
 
 //Create a new Wallet with Balance 0
 export const createNewWallet = async (user, card) => {
-  let res = await axios.post(`/${database}/wallet/${user}/${card}`);
+  let res = await axios.post(`${database}/wallet/${user}/${card}`);
   return res.data;
 };
 
@@ -69,7 +69,7 @@ export const createNewWallet = async (user, card) => {
  ammount: Quantity of money 
  action: add/withdraw */
 export const addOrWithdrawMoney = async (id, ammount, action) => {
-  let res = await axios.put(`/${database}/wallet/${id}/${ammount}/${action}`);
+  let res = await axios.put(`${database}/wallet/${id}/${ammount}/${action}`);
   return res.data;
 };
 
@@ -77,14 +77,14 @@ export const addOrWithdrawMoney = async (id, ammount, action) => {
 
 //Get all transactions data(admin)
 export const getAllTransactions = async () => {
-  let res = await axios.get(`/${database}/transaction`);
+  let res = await axios.get(`${database}/transaction`);
   return res.data;
 };
 
 //Get all transactions from a user
 //User stands for UserId
 export const getUserTransaction = async (user) => {
-  let res = await axios.get(`/${database}/transaction/${user}`);
+  let res = await axios.get(`${database}/transaction/${user}`);
   return res.data;
 };
 
@@ -94,7 +94,7 @@ addressee : user's WalledId
 ammount : quantity to give*/
 export const executeTransaction = async (sender, addressee, ammount) => {
   let res = await axios.post(
-    `/${database}/transaction/${sender}/${addressee}/${ammount}`
+    `${database}/transaction/${sender}/${addressee}/${ammount}`
   );
   return res.data;
 };
@@ -102,20 +102,20 @@ export const executeTransaction = async (sender, addressee, ammount) => {
 //State Routes
 
 export const getStates = async () => {
-  let res = await axios.get(`/${database}/state`);
+  let res = await axios.get(`${database}/state`);
   return res.data;
 };
 
 //Role Routes
 
 export const getRoles = async () => {
-  let res = await axios.get(`/${database}/role`);
+  let res = await axios.get(`${database}/role`);
   return res.data;
 };
 
 //Card Routes
 
 export const getCards = async () => {
-  let res = await axios.get(`/${database}/card`);
+  let res = await axios.get(`${database}/card`);
   return res.data;
 };
