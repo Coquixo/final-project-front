@@ -33,8 +33,8 @@ const Login = () => {
         }));
     };
 
-    const loginTry = () => {
-        let res = login(user);
+    const loginTry = async () => {
+        let res = await login(user);
         setTimeout(() => {
             navigate("/balances");
         }, 500);

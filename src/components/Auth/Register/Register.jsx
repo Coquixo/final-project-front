@@ -4,7 +4,6 @@ import "./Register.scss";
 import { useNavigate } from "react-router-dom";
 import { register } from "../../../services/apiCalls";
 import { errorCheck } from "../../../services/errorManage";
-import Login from "../LogIn/LogIn";
 
 const Register = () => {
     const navigate = useNavigate();
@@ -22,8 +21,6 @@ const Register = () => {
         passwordError: "",
     });
 
-    const [registered, setRegistered] = useState(false);
-
     const inputHandler = (e) => {
         setUser((prevState) => ({
             ...prevState,
@@ -40,11 +37,15 @@ const Register = () => {
         }));
     };
 
-    const registerTry = () => {
-        setRegistered(true);
-        setTimeout(() => {
-            navigate("/welcome");
-        }, 500);
+    const registerTry = async () => {
+        let res = await register(user);
+        //Falta implementar el token.
+
+        if (res.message == "User created successfully") {
+            setTimeout(() => {
+                navigate("/welcome");
+            }, 500);
+        }
     };
 
     return (
