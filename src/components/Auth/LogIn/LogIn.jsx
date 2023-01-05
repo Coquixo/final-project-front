@@ -78,9 +78,8 @@ const Login = () => {
                                 }
                             />
                             <Form.Text className="text-danger errorHandlerDesign ">
-                                {userError.emailError}
-                                <br />
-                                {userError.passwordError}
+                                <span>{userError.emailError}</span>
+                                <span>{userError.passwordError}</span>
                             </Form.Text>
                         </Form.Group>
                         <Button className="my-2 submitButton" onClick={() => loginTry()}>

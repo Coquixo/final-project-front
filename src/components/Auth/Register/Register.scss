@@ -62,6 +62,8 @@
 }
 
 .errorHandlerDesign {
+  display: flex !important;
+  flex-direction: column !important;
   color: red;
   padding: 0.4em 0em;
   font-size: small;
