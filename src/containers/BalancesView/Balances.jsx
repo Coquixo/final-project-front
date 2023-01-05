@@ -4,6 +4,7 @@ import MyNavBar from "../../components/Navbar/Navbar";
 const Balances = () => {
     return (
         <MyNavBar />
+
     )
 }
 

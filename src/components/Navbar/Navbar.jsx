@@ -9,25 +9,36 @@ import { userData } from "../../services/slices/userSlice";
 
 const MyNavBar = () => {
     const navigate = useNavigate();
-    const userReduxCredentials = useSelector(userData)
+    const userReduxCredentials = useSelector(userData);
 
     return (
-        <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
+        <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark" >
+            <Navbar.Brand
+                onClick={() => navigate("/welcome")}
+                className="nameNavBar text-danger ">
+                MJÖLNIR CAPITAL
+            </Navbar.Brand>
             <Container>
                 <Navbar.Brand
                     onClick={() => navigate("/profile")}
                     className="nameNavBar text-warning">
-                    {userReduxCredentials.credentials.name}
+                    Welcome {userReduxCredentials.credentials.name}
                 </Navbar.Brand>
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                 <Navbar.Collapse id="responsive-navbar-nav">
                     <Nav className="me-auto">
-                        <Nav.Link href="#features">Features</Nav.Link>
-                        <Nav.Link href="#pricing">Pricing</Nav.Link>
+                        <Nav.Link href="/transactions">My Transactions</Nav.Link>
+                        <Nav.Link href="#pricing">MyCards</Nav.Link>
                     </Nav>
                     <Nav>
-                        <Nav.Link >My LinkedIn</Nav.Link>
-                        <Nav.Link >My Github</Nav.Link>
+                        <Nav.Link
+                            href="https://www.linkedin.com/in/alex-marcelo-lopez-quiroga5555/"
+                            target="_blank">
+                            My LinkedIn
+                        </Nav.Link>
+                        <Nav.Link href="https://github.com/Coquixo" target="_blank">
+                            My Github
+                        </Nav.Link>
                     </Nav>
                 </Navbar.Collapse>
             </Container>

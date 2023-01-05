@@ -1,13 +1,22 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import "./Welcome.scss"
+import { userData } from "../../services/slices/userSlice";
+import "./Welcome.scss";
 
 const Welcome = () => {
     const navigate = useNavigate();
 
+    const userReduxCredentials = useSelector(userData);
+
     const navigateToHome = () => {
         setTimeout(() => {
-            navigate("/");
+            if (userReduxCredentials.credentials.token == undefined) {
+                navigate("/");
+            }
+            if (userReduxCredentials.credentials.token !== undefined) {
+                navigate("/balances");
+            }
         }, 500);
     };
 
