@@ -63,11 +63,11 @@ const UpdateMyProfile = () => {
 
     const updateTry = async () => {
         let res = await updateProfile(usersEmail, user, token);
-        console.log(res)
         setTimeout(() => {
             if (userReduxCredentials.credentials.token !== undefined) {
                 dispatch(userout({ credentials: {} })).then(navigate("/"));
             }
+
         }, 500);
     };
     return (

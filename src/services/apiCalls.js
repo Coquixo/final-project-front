@@ -38,7 +38,6 @@ export const updateUserStatus = async (email, user) => {
 /*We ask for email to verify what email data we are updating.
 User stands for the body.*/
 export const updateProfile = async (email, user, token) => {
-  console.log(token);
   let res = await axios.put(`${database}/user/${email}/update`, user, {
     headers: { Authorization: `Bearer ${token}` },
   });
