@@ -48,7 +48,6 @@ const Login = () => {
     const loginTry = async () => {
         let res = await loginApi(user);
         dispatch(login({ credentials: res }));
-        sessionStorage.setItem("userLoged", JSON.stringify(res));
         setTimeout(() => {
             navigate("/balances");
         }, 500);

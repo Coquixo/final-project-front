@@ -37,15 +37,18 @@ export const updateUserStatus = async (email, user) => {
 //Update User
 /*We ask for email to verify what email data we are updating.
 User stands for the body.*/
-export const updateProfile = async (email, user) => {
-  let res = await axios.put(`/${database}/${email}/update`, user);
+export const updateProfile = async (email, user, token) => {
+  console.log(token);
+  let res = await axios.put(`${database}/user/${email}/update`, user, {
+    headers: { Authorization: `Bearer ${token}` },
+  });
   return res.data;
 };
 
 //Delete a user
 //Email stands for what account we are deleting
 export const deleteUser = async (email) => {
-  let res = await axios.delete(`${database}/${email}/delete`);
+  let res = await axios.delete(`${database}/user/${email}/delete`);
   return res.data;
 };
 

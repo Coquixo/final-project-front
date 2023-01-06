@@ -43,7 +43,7 @@ const Register = () => {
         let res = await registerApi(user);
         //Falta implementar el token.
 
-        if (res.message == "User created successfully") {
+        if (res.message === "User created successfully") {
             setTimeout(() => {
                 navigate("/welcome");
             }, 500);
@@ -81,7 +81,7 @@ const Register = () => {
                             <Form.Label>Email</Form.Label>
                             <Form.Control
                                 type="email"
-                                placeholder="Example@gmail..com"
+                                placeholder="example@gmail.com"
                                 name="email"
                                 onChange={inputHandler}
                                 onInput={(e) =>
