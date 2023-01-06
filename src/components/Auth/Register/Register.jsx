@@ -4,9 +4,11 @@ import "./Register.scss";
 import { useNavigate } from "react-router-dom";
 import { registerApi } from "../../../services/apiCalls";
 import { errorCheck } from "../../../services/errorManage";
-
+import EyeIcon from "../../icons/EyeIcon";
+import EyeSlashIcon from "../../icons/EyeSlashIcon";
 const Register = () => {
     const navigate = useNavigate();
+    const [passwordShown, setPasswordShown] = useState(false);
     const [user, setUser] = useState({
         email: "",
         name: "",
@@ -46,6 +48,10 @@ const Register = () => {
                 navigate("/welcome");
             }, 500);
         }
+    };
+
+    const togglePassword = () => {
+        setPasswordShown(!passwordShown);
     };
 
     return (
@@ -96,13 +102,18 @@ const Register = () => {
                             />
                             <Form.Label>Password</Form.Label>
                             <Form.Control
-                                type="password"
+                                type={passwordShown ? "text" : "password"}
                                 name="password"
                                 onChange={inputHandler}
                                 onInput={(e) =>
                                     errorHandler(e.target.name, e.target.value, "password")
                                 }
                             />
+                            {passwordShown ? (
+                                <EyeSlashIcon onClick={togglePassword} />
+                            ) : (
+                                <EyeIcon onClick={togglePassword} />
+                            )}
                             <Form.Text className="text-danger errorHanlderDesign d-flex flex-column">
                                 <span>{userError.nameError}</span>
                                 <span>{userError.emailError}</span>
