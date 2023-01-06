@@ -11,12 +11,10 @@ import EyeSlashIcon from "../icons/EyeSlashIcon";
 const UpdateMyProfile = () => {
     const userReduxCredentials = useSelector(userData);
     const [passwordShown, setPasswordShown] = useState(false);
-    const [usersEmail, setUsersEmail] = useState(
-        userReduxCredentials.credentials.email
-    );
+    const [usersEmail, setUsersEmail] = useState("");
     const token = userReduxCredentials.credentials.token;
     const dispatch = useDispatch();
-    const navigate = useNavigate()
+    const navigate = useNavigate();
     const [user, setUser] = useState({
         name: userReduxCredentials.credentials.name,
         surname: userReduxCredentials.credentials.surname,
@@ -25,7 +23,7 @@ const UpdateMyProfile = () => {
         country: userReduxCredentials.credentials.country,
         city: userReduxCredentials.credentials.city,
         address: userReduxCredentials.credentials.address,
-        password: undefined,
+        password: "",
     });
 
     const [userError, setUserError] = useState({
@@ -63,23 +61,24 @@ const UpdateMyProfile = () => {
 
     const updateTry = async () => {
         let res = await updateProfile(usersEmail, user, token);
-        setTimeout(() => {
+        console.log(res)
+        setTimeout(async () => {
             if (userReduxCredentials.credentials.token !== undefined) {
-                dispatch(userout({ credentials: {} })).then(navigate("/"));
+                await dispatch(userout({ credentials: {} }))
+                navigate("/");
             }
-
         }, 500);
     };
     return (
         <Container>
             <Row>
-                <Col className="formTitle mt-3 border-1 border border-dark">
-                    REGISTER
+                <Col className="formTitle mt-3 border-1 border border-light">
+                    UPDATE USER
                 </Col>
             </Row>
             <Col>
-                <Form>
-                    <Form.Group className="m-2">
+                <Form className="text-dark">
+                    <Form.Group className="mt-1">
                         <Form.Label>Name</Form.Label>
                         <Form.Control
                             type="text"
@@ -90,7 +89,10 @@ const UpdateMyProfile = () => {
                                 errorHandler(e.target.name, e.target.value, "text")
                             }
                         />
-                        <Form.Label>Surame</Form.Label>
+                        <span className="text-danger errorHanlderDesign d-flex flex-column">
+                            {userError.nameError}
+                        </span>
+                        <Form.Label>Surname</Form.Label>
                         <Form.Control
                             name="surname"
                             onChange={inputHandler}
@@ -113,6 +115,9 @@ const UpdateMyProfile = () => {
                                 errorHandler(e.target.name, e.target.value, "age")
                             }
                         />
+                        <span className="text-danger errorHanlderDesign d-flex flex-column">
+                            {userError.ageError}
+                        </span>
 
                         <Form.Label>Country</Form.Label>
                         <Form.Control
@@ -151,13 +156,19 @@ const UpdateMyProfile = () => {
                                 errorHandler(e.target.name, e.target.value, "password")
                             }
                         />
+                        <span className="text-danger errorHanlderDesign d-flex flex-column">
+                            {userError.passwordError}
+                        </span>
+
                         {passwordShown ? (
                             <EyeSlashIcon onClick={togglePassword} />
                         ) : (
                             <EyeIcon onClick={togglePassword} />
                         )}
                     </Form.Group>
-                    <Form.Label>Please, verify your email</Form.Label>
+                    <Form.Label className="text-warning">
+                        Please, verify your email
+                    </Form.Label>
                     <Form.Control
                         type="email"
                         placeholder="Example@gmail.com"
@@ -167,16 +178,12 @@ const UpdateMyProfile = () => {
                             errorHandler(e.target.name, e.target.value, "email")
                         }
                     />
+                    <span className="text-danger errorHanlderDesign d-flex flex-column">
+                        {userError.emailError}
+                    </span>
                     <Button className="my-2 submitButton" onClick={() => updateTry()}>
                         SUBMIT
                     </Button>
-
-                    <Form.Text className="text-danger errorHanlderDesign d-flex flex-column">
-                        <span>{userError.nameError}</span>
-                        <span>{userError.emailError}</span>
-                        <span>{userError.passwordError}</span>
-                        <span>{userError.ageError}</span>
-                    </Form.Text>
                 </Form>
             </Col>
         </Container>
