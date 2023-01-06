@@ -12,7 +12,7 @@ const MyNavBar = () => {
     const userReduxCredentials = useSelector(userData);
 
     return (
-        <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark" >
+        <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
             <Navbar.Brand
                 onClick={() => navigate("/welcome")}
                 className="nameNavBar text-danger ">
@@ -21,8 +21,8 @@ const MyNavBar = () => {
             <Container>
                 <Navbar.Brand
                     onClick={() => navigate("/profile")}
-                    className="nameNavBar text-warning">
-                    Welcome {userReduxCredentials.credentials.name}
+                    className="nameNavBar text-warning  font-monospace">
+                    {userReduxCredentials.credentials.name}
                 </Navbar.Brand>
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                 <Navbar.Collapse id="responsive-navbar-nav">
@@ -31,6 +31,9 @@ const MyNavBar = () => {
                         <Nav.Link href="#pricing">MyCards</Nav.Link>
                     </Nav>
                     <Nav>
+                        <Nav.Link href="/welcome" className="text-info">
+                            Log Out
+                        </Nav.Link>
                         <Nav.Link
                             href="https://www.linkedin.com/in/alex-marcelo-lopez-quiroga5555/"
                             target="_blank">
