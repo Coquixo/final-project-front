@@ -4,12 +4,19 @@ import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import { useNavigate } from "react-router";
 import "./Navbar.scss";
-import { useSelector } from "react-redux";
-import { userData } from "../../services/slices/userSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { userData, userout } from "../../services/slices/userSlice";
 
 const MyNavBar = () => {
     const navigate = useNavigate();
     const userReduxCredentials = useSelector(userData);
+    const dispatch = useDispatch();
+    const logOut = () => {
+        if (userReduxCredentials.credentials.token !== undefined) {
+            dispatch(userout({ credentials: {} })).then(navigate("/welcome"));
+        }
+
+    };
 
     return (
         <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
@@ -31,7 +38,7 @@ const MyNavBar = () => {
                         <Nav.Link href="#pricing">MyCards</Nav.Link>
                     </Nav>
                     <Nav>
-                        <Nav.Link href="/welcome" className="text-info">
+                        <Nav.Link href="" className="text-info" onClick={logOut}>
                             Log Out
                         </Nav.Link>
                         <Nav.Link
