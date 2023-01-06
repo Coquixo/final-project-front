@@ -6,11 +6,13 @@ import { loginApi } from "../../../services/apiCalls";
 import { errorCheck } from "../../../services/errorManage";
 import { useDispatch, useSelector } from "react-redux";
 import { userData, login } from "../../../services/slices/userSlice";
-
+import EyeIcon from "../../icons/EyeIcon";
+import EyeSlashIcon from "../../icons/EyeSlashIcon";
 const Login = () => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
-    const userReduxCredentials = useSelector(userData)
+    const userReduxCredentials = useSelector(userData);
+    const [passwordShown, setPasswordShown] = useState(false);
     const [user, setUser] = useState({
         email: "",
         password: "",
@@ -39,19 +41,21 @@ const Login = () => {
 
     useEffect(() => {
         if (userReduxCredentials.credentials.token !== undefined) {
-            navigate("/balances")
+            navigate("/balances");
         }
-    }, [])
+    }, []);
 
     const loginTry = async () => {
         let res = await loginApi(user);
-        dispatch(login({ credentials: res }))
-        sessionStorage.setItem("userLoged", JSON.stringify(res))
+        dispatch(login({ credentials: res }));
+        sessionStorage.setItem("userLoged", JSON.stringify(res));
         setTimeout(() => {
             navigate("/balances");
         }, 500);
+    };
 
-
+    const togglePassword = () => {
+        setPasswordShown(!passwordShown);
     };
 
     return (
@@ -80,7 +84,7 @@ const Login = () => {
                             />
                             <Form.Label>Password</Form.Label>
                             <Form.Control
-                                type="password"
+                                type={passwordShown ? "text" : "password"}
                                 name="password"
                                 placeholder="Enter password"
                                 onChange={inputHandler}
@@ -88,6 +92,11 @@ const Login = () => {
                                     errorHandler(e.target.name, e.target.value, "password")
                                 }
                             />
+                            {passwordShown ? (
+                                <EyeSlashIcon onClick={togglePassword} />
+                            ) : (
+                                <EyeIcon onClick={togglePassword} />
+                            )}
                             <Form.Text className="text-danger errorHandlerDesign ">
                                 <span>{userError.emailError}</span>
                                 <span>{userError.passwordError}</span>
