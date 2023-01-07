@@ -61,7 +61,6 @@ const UpdateMyProfile = () => {
 
     const updateTry = async () => {
         let res = await updateProfile(usersEmail, user, token);
-        console.log(res)
         setTimeout(async () => {
             if (userReduxCredentials.credentials.token !== undefined) {
                 await dispatch(userout({ credentials: {} }))

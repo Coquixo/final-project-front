@@ -11,7 +11,9 @@ const Balances = () => {
     const [creditBalances, setCreditBalances] = useState([]);
     const [debitBalances, setDebitBalances] = useState([]);
     const userReduxCredentials = useSelector(userData);
-    const [totalBalance, setTotalBalance] = useState(0);
+    let [totalBalance, setTotalBalance] = useState(0);
+    const [moneyToChangeCredit, setMoneyToChangeCredit] = useState(0)
+    const [moneyToChangeDebit, setMoneyToChangeDebit] = useState(0)
 
     useEffect(() => {
         if (creditBalances.length === 0) {
@@ -30,8 +32,15 @@ const Balances = () => {
                 }
             );
         }
+
     }, []);
 
+    const moneyHandlerCredit = (e) => {
+        setMoneyToChangeCredit(e.target.value)
+    };
+    const moneyHandlerDebit = (e) => {
+        setMoneyToChangeDebit(e.target.value)
+    };
     return (
         <div>
             <MyNavBar />
@@ -64,13 +73,14 @@ const Balances = () => {
                             <CreateWallet name={"credit"} />
                         ) : (
                             <>
-                                <AddWithdrawMoney action={"Add"} card={1} quantity={10} />
-                                <AddWithdrawMoney action={"Withdraw"} card={1} quantity={10} />
+                                <AddWithdrawMoney action={"Add"} quantity={moneyToChangeCredit} walletId={creditBalances.id} />
+                                <AddWithdrawMoney action={"Withdraw"} quantity={moneyToChangeCredit} walletId={creditBalances.id} />
                                 <input
                                     type="number"
                                     max={150}
                                     min={0}
                                     placeholder={"Money Quantity"}
+                                    onChange={moneyHandlerCredit}
                                 />
                             </>
                         )}
@@ -83,13 +93,14 @@ const Balances = () => {
                             <CreateWallet name={"credit"} />
                         ) : (
                             <>
-                                <AddWithdrawMoney action={"Add"} card={2} quantity={10} />
-                                <AddWithdrawMoney action={"Withdraw"} card={2} quantity={10} />
+                                <AddWithdrawMoney action={"Add"} quantity={moneyToChangeDebit} walletId={debitBalances.id} />
+                                <AddWithdrawMoney action={"Withdraw"} quantity={moneyToChangeDebit} walletId={debitBalances.id} />
                                 <input
                                     type="number"
                                     max={150}
                                     min={0}
                                     placeholder={"Money Quantity"}
+                                    onChange={moneyHandlerDebit}
                                 />
                             </>
                         )}
