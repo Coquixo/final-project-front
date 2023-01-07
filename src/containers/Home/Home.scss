@@ -15,10 +15,18 @@
   }
 }
 
+.centeredDiv {
+  height: 93.5vh;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+
 .homeTitle {
   font-size: xx-large;
   font-weight: 900;
   color: white;
+  cursor: pointer;
 
   -webkit-user-select: none; /* Safari */
   -ms-user-select: none; /* IE 10 and IE 11 */
@@ -40,4 +48,7 @@
   color: red;
   animation: optionHoverStart 0.5s;
   background-color: black;
+  -webkit-user-select: none; /* Safari */
+  -ms-user-select: none; /* IE 10 and IE 11 */
+  user-select: none; /* Standard syntax */
 }

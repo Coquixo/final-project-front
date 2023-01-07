@@ -13,7 +13,10 @@ const MyNavBar = () => {
     const dispatch = useDispatch();
     const logOut = () => {
         if (userReduxCredentials.credentials.token !== undefined) {
-            dispatch(userout({ credentials: {} })).then(navigate("/welcome"));
+            setTimeout(() => {
+
+                dispatch(userout({ credentials: {} })).then(navigate("/welcome"));
+            }, 300);
         }
 
     };
