@@ -1,13 +1,19 @@
+import React from "react";
 import { Button, Col, Row } from "react-bootstrap";
 import { addOrWithdrawMoney } from "../../../services/apiCalls";
+import { useNavigate } from "react-router";
 const AddWithdrawMoney = (props) => {
     const action = props.action;
     const quantity = props.quantity;
     const walletId = props.walletId;
+    const navigate = useNavigate()
 
     const sendMoneyRequest = async () => {
         await addOrWithdrawMoney(walletId, quantity, action)
+        navigate("/")
     }
+
+
 
     return (
         <Row>
