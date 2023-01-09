@@ -22,6 +22,9 @@ export const errorCheck = (value, type) => {
       if (!/[0-9]/gi.test(value)) {
         return "*Please, add your age.";
       }
+      if (value < 18) {
+        return "*You must be an adult >18";
+      }
 
     case "phone":
       if (!/(?=.*?[0-9])/.test(value)) {

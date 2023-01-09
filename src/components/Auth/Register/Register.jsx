@@ -40,8 +40,15 @@ const Register = () => {
     };
 
     const registerTry = async () => {
+        if (
+            userError.nameError !== "" ||
+            userError.emailError !== "" ||
+            userError.ageError !== "" ||
+            userError.passwordError !== ""
+        ) {
+            return;
+        }
         let res = await registerApi(user);
-        //Falta implementar el token.
 
         if (res.message === "User created successfully") {
             setTimeout(() => {

@@ -4,8 +4,8 @@ import { useNavigate } from "react-router";
 
 const CreateWallet = (props) => {
     const navigate = useNavigate()
-    let user = props.userId
-    let card = props.cardId
+    const user = props.userId
+    const card = props.cardId
 
     const createWalletRequest = async () => {
         await createNewWallet(user, card);

@@ -46,6 +46,14 @@ const Login = () => {
     }, []);
 
     const loginTry = async () => {
+        if (
+            userError.emailError !== "" ||
+            userError.passwordError !== ""
+        ) {
+            return;
+        }
+
+
         let res = await loginApi(user);
         dispatch(login({ credentials: res }));
         setTimeout(() => {
