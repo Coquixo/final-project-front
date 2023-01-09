@@ -6,11 +6,21 @@ const AddWithdrawMoney = (props) => {
     const action = props.action;
     const quantity = props.quantity;
     const walletId = props.walletId;
+    const actualBalance = props.actualBalance
     const navigate = useNavigate()
 
-    const sendMoneyRequest = async () => {
-        await addOrWithdrawMoney(walletId, quantity, action)
-        navigate("/")
+    const moneyRequest = async () => {
+        let result = actualBalance - quantity
+
+        if (result < 0 && action === "Withdraw") {
+            return
+        }
+
+
+        if (quantity !== 0) {
+            await addOrWithdrawMoney(walletId, quantity, action)
+            navigate("/")
+        }
     }
 
 
@@ -19,7 +29,7 @@ const AddWithdrawMoney = (props) => {
         <Row>
             <Col className="align-items-center">
                 <Button className="bg-dark border border-2 border-light text-info my-2"
-                    onClick={sendMoneyRequest}
+                    onClick={moneyRequest}
                 >{`${action} money`}</Button>
             </Col>
         </Row>

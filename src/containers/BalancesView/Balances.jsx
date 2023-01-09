@@ -107,11 +107,13 @@ const Balances = () => {
                                     action={"Add"}
                                     quantity={moneyToChangeDebit}
                                     walletId={debitBalances.id}
+                                    actualBalance={debitBalances.balance}
                                 />
                                 <AddWithdrawMoney
                                     action={"Withdraw"}
                                     quantity={moneyToChangeDebit}
                                     walletId={debitBalances.id}
+                                    actualBalance={debitBalances.balance}
                                 />
                                 <input
                                     type="number"
