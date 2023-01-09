@@ -31,9 +31,11 @@ const UpdateMyProfile = () => {
         surnameError: "",
         ageError: "",
         phoneError: "",
-        coutryError: "",
+        countryError: "",
         cityError: "",
         addressError: "",
+        passwordError: "",
+        emailError: ""
     });
 
     const inputHandler = (e) => {
@@ -60,6 +62,22 @@ const UpdateMyProfile = () => {
     };
 
     const updateTry = async () => {
+
+        if (
+            userError.nameError !== "" ||
+            userError.surnameError !== "" ||
+            userError.ageError !== "" ||
+            userError.phoneError !== "" ||
+            userError.countryError !== "" ||
+            userError.cityError !== "" ||
+            userError.addressError !== "" ||
+            userError.passwordError !== "" ||
+            userError.emailError !== ""
+        ) {
+            return;
+        }
+
+
         let res = await updateProfile(usersEmail, user, token);
         setTimeout(async () => {
             if (userReduxCredentials.credentials.token !== undefined) {
