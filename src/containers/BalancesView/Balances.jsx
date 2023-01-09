@@ -6,6 +6,7 @@ import AddWithdrawMoney from "../../components/Wallet/WalletForm/AddWithdrawMone
 import CreateWallet from "../../components/Wallet/WalletForm/CreateWalletForm";
 import { getWalletBalance } from "../../services/apiCalls";
 import { userData } from "../../services/slices/userSlice";
+import "./Balances.scss"
 
 const Balances = () => {
     const [creditBalances, setCreditBalances] = useState([]);
@@ -14,10 +15,12 @@ const Balances = () => {
     let [totalBalance, setTotalBalance] = useState(0);
     const [moneyToChangeCredit, setMoneyToChangeCredit] = useState(0);
     const [moneyToChangeDebit, setMoneyToChangeDebit] = useState(0);
+    const userId = userReduxCredentials.credentials.id;
+
 
     useEffect(() => {
         if (creditBalances.length === 0) {
-            getWalletBalance(userReduxCredentials.credentials.id, 1).then(
+            getWalletBalance(userId, 1).then(
                 (balances) => {
                     setCreditBalances(balances.data);
                     setTotalBalance(parseInt((totalBalance += balances.data.balance)));
@@ -25,7 +28,7 @@ const Balances = () => {
             );
         }
         if (debitBalances.length === 0) {
-            getWalletBalance(userReduxCredentials.credentials.id, 2).then(
+            getWalletBalance(userId, 2).then(
                 (balances) => {
                     setDebitBalances(balances.data);
                     setTotalBalance(parseInt((totalBalance += balances.data.balance)));
@@ -69,7 +72,7 @@ const Balances = () => {
                     <Col>Credit Options</Col>
                     <Col className="d-flex justify-content-around">
                         {creditBalances === null ? (
-                            <CreateWallet name={"credit"} />
+                            <CreateWallet name={"credit"} cardId={1} userId={userId} />
                         ) : (
                             <>
                                 <AddWithdrawMoney
@@ -86,7 +89,7 @@ const Balances = () => {
                                     type="number"
                                     max={150}
                                     min={0}
-                                    placeholder={"Money Quantity"}
+                                    placeholder={"€?"}
                                     onChange={moneyHandlerCredit}
                                 />
                             </>
@@ -95,9 +98,9 @@ const Balances = () => {
                 </Row>
                 <Row className="align-items-center bg-dark text-light">
                     <Col>Debit Options</Col>
-                    <Col className="d-flex justify-content-around">
+                    <Col className="d-flex justify-content-around" >
                         {debitBalances === null ? (
-                            <CreateWallet name={"credit"} />
+                            <CreateWallet name={"debit"} cardId={2} userId={userId} />
                         ) : (
                             <>
                                 <AddWithdrawMoney
@@ -114,7 +117,7 @@ const Balances = () => {
                                     type="number"
                                     max={150}
                                     min={0}
-                                    placeholder={"Money Quantity"}
+                                    placeholder={"€?"}
                                     onChange={moneyHandlerDebit}
                                 />
                             </>
