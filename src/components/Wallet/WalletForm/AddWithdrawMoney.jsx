@@ -26,13 +26,11 @@ const AddWithdrawMoney = (props) => {
 
 
     return (
-        <Row>
-            <Col className="align-items-center">
-                <Button className="bg-dark border border-2 border-light text-info my-2"
-                    onClick={moneyRequest}
-                >{`${action} money`}</Button>
-            </Col>
-        </Row>
+        <Col className="align-items-center">
+            <Button className="bg-dark border border-2 border-light text-info my-2"
+                onClick={moneyRequest}
+            >{`${action} money`}</Button>
+        </Col>
     );
 };
 

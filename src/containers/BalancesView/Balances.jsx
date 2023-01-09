@@ -70,60 +70,79 @@ const Balances = () => {
                 </Row>
                 <Row className="align-items-center bg-dark text-light">
                     <Col>Credit Options</Col>
-                    <Col className="d-flex justify-content-around">
-                        {creditBalances === null ? (
-                            <CreateWallet name={"credit"} cardId={1} userId={userId} />
-                        ) : (
-                            <>
-                                <AddWithdrawMoney
-                                    action={"Add"}
-                                    quantity={moneyToChangeCredit}
-                                    walletId={creditBalances.id}
-                                />
-                                <AddWithdrawMoney
-                                    action={"Withdraw"}
-                                    quantity={moneyToChangeCredit}
-                                    walletId={creditBalances.id}
-                                />
-                                <input
-                                    type="number"
-                                    max={150}
-                                    min={0}
-                                    placeholder={"€?"}
-                                    onChange={moneyHandlerCredit}
-                                />
-                            </>
-                        )}
+                    <Col>
+                        <Row fluid>
+                            {creditBalances === null ? (
+                                <CreateWallet name={"credit"} cardId={1} userId={userId} />
+                            ) : (
+                                <>
+                                    <Col>
+                                        <AddWithdrawMoney
+                                            action={"Add"}
+                                            quantity={moneyToChangeCredit}
+                                            walletId={creditBalances.id}
+                                        />
+                                    </Col>
+                                    <Col>
+                                        <AddWithdrawMoney
+                                            action={"Withdraw"}
+                                            quantity={moneyToChangeCredit}
+                                            walletId={creditBalances.id}
+                                        />
+                                    </Col>
+                                    <Col className="align-items-center d-flex justify-content-center" >
+                                        <input
+                                            className="inputMoneyDesign"
+                                            type="number"
+                                            max={150}
+                                            min={0}
+                                            placeholder={"Quantity"}
+                                            onChange={moneyHandlerCredit}
+                                        />
+                                    </Col>
+                                </>
+                            )}
+                        </Row>
                     </Col>
                 </Row>
                 <Row className="align-items-center bg-dark text-light">
                     <Col>Debit Options</Col>
-                    <Col className="d-flex justify-content-around" >
-                        {debitBalances === null ? (
-                            <CreateWallet name={"debit"} cardId={2} userId={userId} />
-                        ) : (
-                            <>
-                                <AddWithdrawMoney
-                                    action={"Add"}
-                                    quantity={moneyToChangeDebit}
-                                    walletId={debitBalances.id}
-                                    actualBalance={debitBalances.balance}
-                                />
-                                <AddWithdrawMoney
-                                    action={"Withdraw"}
-                                    quantity={moneyToChangeDebit}
-                                    walletId={debitBalances.id}
-                                    actualBalance={debitBalances.balance}
-                                />
-                                <input
-                                    type="number"
-                                    max={150}
-                                    min={0}
-                                    placeholder={"€?"}
-                                    onChange={moneyHandlerDebit}
-                                />
-                            </>
-                        )}
+                    <Col>
+                        <Row fluid>
+
+                            {debitBalances === null ? (
+                                <CreateWallet name={"debit"} cardId={2} userId={userId} />
+                            ) : (
+                                <>
+                                    <Col>
+                                        <AddWithdrawMoney
+                                            action={"Add"}
+                                            quantity={moneyToChangeDebit}
+                                            walletId={debitBalances.id}
+                                            actualBalance={debitBalances.balance}
+                                        />
+                                    </Col>
+                                    <Col>
+                                        <AddWithdrawMoney
+                                            action={"Withdraw"}
+                                            quantity={moneyToChangeDebit}
+                                            walletId={debitBalances.id}
+                                            actualBalance={debitBalances.balance}
+                                        />
+                                    </Col>
+                                    <Col className="align-items-center d-flex justify-content-center" >
+                                        <input
+                                            className=" inputMoneyDesign"
+                                            type="number"
+                                            max={150}
+                                            min={0}
+                                            placeholder={"Quantity"}
+                                            onChange={moneyHandlerDebit}
+                                        />
+                                    </Col>
+                                </>
+                            )}
+                        </Row>
                     </Col>
                 </Row>
             </Container>
