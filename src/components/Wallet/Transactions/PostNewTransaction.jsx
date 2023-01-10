@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import { Button, Col, Container, Row, Form } from "react-bootstrap";
 import { useSelector } from "react-redux";
+import { executeTransactionByEmail } from "../../../services/apiCalls";
 import { errorCheck } from "../../../services/errorManage";
 import { userData } from "../../../services/slices/userSlice";
+import { useNavigate } from "react-router";
 
 const ExecuteNewTransaction = () => {
     const userReduxCredentials = useSelector(userData);
@@ -10,6 +12,8 @@ const ExecuteNewTransaction = () => {
     const email = userReduxCredentials.credentials.email;
     const [senderEmail, setSenderEmail] = useState(email);
     const [addresseeEmail, setAddresseeEmail] = useState("");
+    const [moneyToSend, setMoneyToSend] = useState(0);
+    const navigate = useNavigate()
 
     const [userError, setUserError] = useState({
         senderError: "",
@@ -23,6 +27,10 @@ const ExecuteNewTransaction = () => {
         setAddresseeEmail(e.target.value);
     };
 
+    const moneyToSendHandler = (e) => {
+        setMoneyToSend(e.target.value);
+    };
+
     const errorHandler = (field, value, type) => {
         let error = "";
         error = errorCheck(value, type);
@@ -32,10 +40,11 @@ const ExecuteNewTransaction = () => {
         }));
     };
 
-    const executeNewTransactionRequest = () => {
-        if (role === 2) {
-            // usar"Email"
-        }
+    const executeNewTransactionRequest = async () => {
+        let response = await executeTransactionByEmail(senderEmail, addresseeEmail, moneyToSend);
+        setTimeout(() => {
+            navigate("/balances")
+        }, 500);
     };
 
     return (
@@ -58,9 +67,7 @@ const ExecuteNewTransaction = () => {
                             <span> {userError.senderError}</span>
                         </>
                     ) : (
-                        <>
-                            {" "}     {email}
-                        </>
+                        <> {email}</>
                     )}
                 </Form.Group>
                 <Form.Group className="mt-1">
@@ -74,17 +81,26 @@ const ExecuteNewTransaction = () => {
                             errorHandler(e.target.name, e.target.value, "email")
                         }
                     />
-                    {userError.addresseeError !== "" ?
+                    {userError.addresseeError !== "" ? (
                         <Form.Text className="text-danger errorHandlerDesign">
                             <span>{userError.addresseeError}</span>
                         </Form.Text>
-                        : undefined}
+                    ) : undefined}
                 </Form.Group>
                 <Form.Group className="mt-1">
                     <Form.Label>Quantity:</Form.Label>
-                    <Form.Control type="number" name="Quantity" placeholder="€" />
+                    <Form.Control
+                        type="number"
+                        name="Quantity"
+                        placeholder="€"
+                        onChange={moneyToSendHandler}
+                    />
                 </Form.Group>
-                <Button className="my-2 submitButton">SUBMIT</Button>
+                <Button
+                    className="my-2 submitButton"
+                    onClick={executeNewTransactionRequest}>
+                    SUBMIT
+                </Button>
             </Form>
         </Container>
     );

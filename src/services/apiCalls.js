@@ -95,12 +95,22 @@ export const getUserTransaction = async (user, token) => {
 };
 
 //Execute a new Transaction
-/*sender : user's WalledId
-addressee : user's WalledId
+/*sender : user's WalledId (ID)
+addressee : user's WalledId (ID)
 ammount : quantity to give*/
 export const executeTransaction = async (sender, addressee, ammount) => {
   let res = await axios.post(
     `${database}/move/${sender}/${addressee}/${ammount}`
+  );
+  return res.data;
+};
+//Execute a new Transaction by EMAIL
+/*sender : user's WalledId (EMAIL)
+addressee : user's WalledId (EMAIL)
+ammount : quantity to give*/
+export const executeTransactionByEmail = async (sender, addressee, ammount) => {
+  let res = await axios.post(
+    `${database}/move/${sender}/${addressee}/${ammount}/email`
   );
   return res.data;
 };
