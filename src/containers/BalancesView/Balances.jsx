@@ -6,7 +6,7 @@ import AddWithdrawMoney from "../../components/Wallet/WalletForm/AddWithdrawMone
 import CreateWallet from "../../components/Wallet/WalletForm/CreateWalletForm";
 import { getWalletBalance } from "../../services/apiCalls";
 import { userData } from "../../services/slices/userSlice";
-import "./Balances.scss"
+import "./Balances.scss";
 
 const Balances = () => {
     const [creditBalances, setCreditBalances] = useState([]);
@@ -17,23 +17,18 @@ const Balances = () => {
     const [moneyToChangeDebit, setMoneyToChangeDebit] = useState(0);
     const userId = userReduxCredentials.credentials.id;
 
-
     useEffect(() => {
         if (creditBalances.length === 0) {
-            getWalletBalance(userId, 1).then(
-                (balances) => {
-                    setCreditBalances(balances.data);
-                    setTotalBalance(parseInt((totalBalance += balances.data.balance)));
-                }
-            );
+            getWalletBalance(userId, 1).then((balances) => {
+                setCreditBalances(balances.data);
+                setTotalBalance(parseInt((totalBalance += balances.data.balance)));
+            });
         }
         if (debitBalances.length === 0) {
-            getWalletBalance(userId, 2).then(
-                (balances) => {
-                    setDebitBalances(balances.data);
-                    setTotalBalance(parseInt((totalBalance += balances.data.balance)));
-                }
-            );
+            getWalletBalance(userId, 2).then((balances) => {
+                setDebitBalances(balances.data);
+                setTotalBalance(parseInt((totalBalance += balances.data.balance)));
+            });
         }
     }, []);
 
@@ -90,13 +85,12 @@ const Balances = () => {
                                             walletId={creditBalances.id}
                                         />
                                     </Col>
-                                    <Col className="align-items-center d-flex justify-content-center" >
-                                        <input
-                                            className="inputMoneyDesign"
+                                    <Col className="align-items-center d-flex justify-content-center">
+                                        <Form.Control
                                             type="number"
                                             max={150}
                                             min={0}
-                                            placeholder={"Quantity"}
+                                            placeholder="Quantity"
                                             onChange={moneyHandlerCredit}
                                         />
                                     </Col>
@@ -109,7 +103,6 @@ const Balances = () => {
                     <Col>Debit Options</Col>
                     <Col>
                         <Row fluid="true">
-
                             {debitBalances === null ? (
                                 <CreateWallet name={"debit"} cardId={2} userId={userId} />
                             ) : (
@@ -130,13 +123,12 @@ const Balances = () => {
                                             actualBalance={debitBalances.balance}
                                         />
                                     </Col>
-                                    <Col className="align-items-center d-flex justify-content-center" >
-                                        <input
-                                            className=" inputMoneyDesign"
+                                    <Col className="align-items-center d-flex justify-content-center">
+                                        <Form.Control
                                             type="number"
                                             max={150}
                                             min={0}
-                                            placeholder={"Quantity"}
+                                            placeholder="Quantity"
                                             onChange={moneyHandlerDebit}
                                         />
                                     </Col>
