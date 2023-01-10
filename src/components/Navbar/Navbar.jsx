@@ -37,8 +37,11 @@ const MyNavBar = () => {
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                 <Navbar.Collapse id="responsive-navbar-nav">
                     <Nav className="me-auto">
-                        <Nav.Link href="/transactions">My Transactions</Nav.Link>
-                        <Nav.Link href="#pricing">MyCards</Nav.Link>
+                        <Nav.Link onClick={() => navigate("/transactions")}>My Transactions</Nav.Link>
+                        {userReduxCredentials.credentials.role === 1 ?
+                            <Nav.Link className="text-danger" onClick={() => navigate("/admin")}>Admin Tools</Nav.Link>
+                            : undefined
+                        }
                     </Nav>
                     <Nav>
                         <Nav.Link href="" className="text-info" onClick={logOut}>

@@ -78,15 +78,19 @@ export const addOrWithdrawMoney = async (id, ammount, action) => {
 //Transaction Routes
 
 //Get all transactions data(admin)
-export const getAllTransactions = async () => {
-  let res = await axios.get(`${database}/transaction`);
+export const getAllTransactions = async (token) => {
+  let res = await axios.get(`${database}/move`, {
+    headers: { Authorization: `Bearer ${token}` },
+  });
   return res.data;
 };
 
 //Get all transactions from a user
 //User stands for UserId
-export const getUserTransaction = async (user) => {
-  let res = await axios.get(`${database}/transaction/${user}`);
+export const getUserTransaction = async (user, token) => {
+  let res = await axios.get(`${database}/move/${user}`, {
+    headers: { Authorization: `Bearer ${token}` },
+  });
   return res.data;
 };
 
@@ -96,7 +100,7 @@ addressee : user's WalledId
 ammount : quantity to give*/
 export const executeTransaction = async (sender, addressee, ammount) => {
   let res = await axios.post(
-    `${database}/transaction/${sender}/${addressee}/${ammount}`
+    `${database}/move/${sender}/${addressee}/${ammount}`
   );
   return res.data;
 };

@@ -71,7 +71,7 @@ const Balances = () => {
                 <Row className="align-items-center bg-dark text-light">
                     <Col>Credit Options</Col>
                     <Col>
-                        <Row fluid>
+                        <Row fluid="true">
                             {creditBalances === null ? (
                                 <CreateWallet name={"credit"} cardId={1} userId={userId} />
                             ) : (
@@ -108,7 +108,7 @@ const Balances = () => {
                 <Row className="align-items-center bg-dark text-light">
                     <Col>Debit Options</Col>
                     <Col>
-                        <Row fluid>
+                        <Row fluid="true">
 
                             {debitBalances === null ? (
                                 <CreateWallet name={"debit"} cardId={2} userId={userId} />
