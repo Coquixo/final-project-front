@@ -184,7 +184,9 @@ const UpdateMyProfile = () => {
                         )}
                     </Form.Group>
                     <Form.Label className="text-warning">
-                        Please, verify your email
+                        {userReduxCredentials.credentials.role === 1 ?
+                            "Choose what account we are updating" : "Please verify your email"
+                        }
                     </Form.Label>
                     <Form.Control
                         type="email"

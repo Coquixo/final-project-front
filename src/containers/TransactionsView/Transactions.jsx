@@ -49,7 +49,7 @@ const Transactions = () => {
                     </Col>
                 </Row>
                 <Row fluid className="d-flex justify-content-center bg-dark mt-3">
-                    <Col onClick={giveUserTransactionsRequest} sm={6}>
+                    <Col onClick={giveUserTransactionsRequest} sm={6} className="py-2">
                         {" "}
                         <span className="text-info linkButton">
                             {" "}
@@ -57,8 +57,8 @@ const Transactions = () => {
                         </span>
                     </Col>
                     {userRole === 1 ? (
-                        <Col onClick={giveAllTransactionsRequest}>
-                            <span className="text-warning linkButton">
+                        <Col onClick={giveAllTransactionsRequest} className="py-2">
+                            <span className="text-warning linkButton ">
                                 Click here to see all transactions
                             </span>
                         </Col>
@@ -85,7 +85,7 @@ const Transactions = () => {
                                 })}
                             </Row>
                         ) : (
-                            "There is no transaction in here yet"
+                            "There is no transaction yet in here"
                         )}
                     </Col>
                     <Col className="bg-dark text-light ">

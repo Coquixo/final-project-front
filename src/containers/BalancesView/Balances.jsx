@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Col, Container, Form, Row } from "react-bootstrap";
+import { Col, Container, Form, Modal, ModalFooter, Row } from "react-bootstrap";
 import { useSelector } from "react-redux";
 import MyNavBar from "../../components/Navbar/Navbar";
 import AddWithdrawMoney from "../../components/Wallet/WalletForm/AddWithdrawMoney";
@@ -39,9 +39,9 @@ const Balances = () => {
         setMoneyToChangeDebit(e.target.value);
     };
     return (
-        <div>
+        <div className="vh-100 bg-dark d-flex flex-column ">
             <MyNavBar />
-            <Container fluid>
+            <Container fluid className="bg-dark">
                 <Row className="bg-dark text-danger">
                     <Col>TOTAL BALANCE: {totalBalance}€</Col>
                 </Row>
@@ -63,10 +63,10 @@ const Balances = () => {
                         </p>
                     </Col>
                 </Row>
-                <Row className="align-items-center bg-dark text-light">
-                    <Col>Credit Options</Col>
+                <Row className="align-items-center bg-dark text-light mx-2">
+                    <Col className="text-info h5">Credit Options</Col>
                     <Col>
-                        <Row fluid="true">
+                        <Row fluid="true" className="border rounded my-2 py-2">
                             {creditBalances === null ? (
                                 <CreateWallet name={"credit"} cardId={1} userId={userId} />
                             ) : (
@@ -85,7 +85,9 @@ const Balances = () => {
                                             walletId={creditBalances.id}
                                         />
                                     </Col>
-                                    <Col className="align-items-center d-flex justify-content-center">
+                                    <Col
+                                        className="align-items-center d-flex justify-content-center pt-1"
+                                        xs={12}>
                                         <Form.Control
                                             type="number"
                                             max={150}
@@ -99,10 +101,10 @@ const Balances = () => {
                         </Row>
                     </Col>
                 </Row>
-                <Row className="align-items-center bg-dark text-light">
-                    <Col>Debit Options</Col>
+                <Row className="align-items-center bg-dark text-light mx-2">
+                    <Col className="text-info h5">Debit Options</Col>
                     <Col>
-                        <Row fluid="true">
+                        <Row fluid="true" className="border rounded my-2 py-2">
                             {debitBalances === null ? (
                                 <CreateWallet name={"debit"} cardId={2} userId={userId} />
                             ) : (
@@ -123,7 +125,9 @@ const Balances = () => {
                                             actualBalance={debitBalances.balance}
                                         />
                                     </Col>
-                                    <Col className="align-items-center d-flex justify-content-center">
+                                    <Col
+                                        className="align-items-center d-flex justify-content-center pt-1"
+                                        xs={12}>
                                         <Form.Control
                                             type="number"
                                             max={150}
@@ -138,6 +142,23 @@ const Balances = () => {
                     </Col>
                 </Row>
             </Container>
+            <Row fluid className="m-3 d-flex  justify-content-center">
+                <Col
+                    fluid
+                    xl={8}
+                    className="d-flex justify-content-center align-items-center bg-secondary text-light border-dark border rounded">
+                    <span>
+                        Mjölnir Capital is a new project based on solving every person
+                        finance day-to-day main problem, counting cents. We don't like do
+                        that and you neither so we decided to create a platform where your
+                        friends and you can share good ammounts of money with each other
+                        without thinking on the annoyances.
+                        <br />
+                        What's the best part? You only need to know the addressee email to
+                        make a new transfer :'{")"}
+                    </span>
+                </Col>
+            </Row>
         </div>
     );
 };

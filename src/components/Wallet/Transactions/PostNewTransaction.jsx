@@ -10,6 +10,7 @@ const ExecuteNewTransaction = () => {
     const userReduxCredentials = useSelector(userData);
     const role = userReduxCredentials.credentials.role;
     const email = userReduxCredentials.credentials.email;
+    const state = userReduxCredentials.credentials.state;
     const [senderEmail, setSenderEmail] = useState(email);
     const [addresseeEmail, setAddresseeEmail] = useState("");
     const [moneyToSend, setMoneyToSend] = useState(0);
@@ -41,9 +42,16 @@ const ExecuteNewTransaction = () => {
     };
 
     const executeNewTransactionRequest = async () => {
+        if (state === 2) {
+            setUserError({
+                senderError: "Your account has been disabled, please contact us."
+            })
+            return
+        }
+
         let response = await executeTransactionByEmail(senderEmail, addresseeEmail, moneyToSend);
         setTimeout(() => {
-            navigate("/balances")
+            navigate("/balances ")
         }, 500);
     };
 
@@ -64,7 +72,7 @@ const ExecuteNewTransaction = () => {
                                     errorHandler(e.target.name, e.target.value, "email")
                                 }
                             />
-                            <span> {userError.senderError}</span>
+                            <span className="errorHandlerDesign"> {userError.senderError}</span>
                         </>
                     ) : (
                         <> {email}</>
@@ -83,7 +91,7 @@ const ExecuteNewTransaction = () => {
                     />
                     {userError.addresseeError !== "" ? (
                         <Form.Text className="text-danger errorHandlerDesign">
-                            <span>{userError.addresseeError}</span>
+                            <span className="errorHandlerDesign">{userError.addresseeError}</span>
                         </Form.Text>
                     ) : undefined}
                 </Form.Group>

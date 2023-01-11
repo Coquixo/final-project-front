@@ -22,10 +22,10 @@ const MyNavBar = () => {
     };
 
     return (
-        <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
+        <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark" className="border-bottom border-warning">
             <Navbar.Brand
                 onClick={() => navigate("/welcome")}
-                className="nameNavBar text-danger ">
+                className="nameNavBar text-danger ms-2 ">
                 MJÖLNIR CAPITAL
             </Navbar.Brand>
             <Container>
