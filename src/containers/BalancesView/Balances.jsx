@@ -33,17 +33,19 @@ const Balances = () => {
     }, []);
 
     const moneyHandlerCredit = (e) => {
-        setMoneyToChangeCredit(e.target.value);
+        setMoneyToChangeCredit(Math.abs(e.target.value));
     };
     const moneyHandlerDebit = (e) => {
-        setMoneyToChangeDebit(e.target.value);
+        setMoneyToChangeDebit(Math.abs(e.target.value));
     };
     return (
         <div className="vh-100 bg-dark d-flex flex-column ">
             <MyNavBar />
             <Container fluid className="bg-dark">
-                <Row className="bg-dark text-danger">
-                    <Col>TOTAL BALANCE: {totalBalance}€</Col>
+                <Row className="bg-dark text-danger my-2 h5">
+                    <Col>
+                        TOTAL BALANCE: <span className="text-light">{totalBalance}€</span>
+                    </Col>
                 </Row>
                 <Row>
                     <Col className="bg-dark text-light">

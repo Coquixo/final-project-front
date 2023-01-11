@@ -35,7 +35,7 @@ const Transactions = () => {
                     <Col className="border-bottom square border-danger">
                         <span
                             onClick={() => navigate("/welcome")}
-                            className="text-danger linkButton fs-5">
+                            className="text-danger linkButton fs-5 fw-bold d-flex align-items-center justify-content-center">
                             MJÖLNIR CAPITAL
                         </span>
                     </Col>
@@ -43,8 +43,8 @@ const Transactions = () => {
                     <Col className="border-bottom square border-info">
                         <span
                             onClick={() => navigate("/balances")}
-                            className="linkButton text-info d-flex align-items-center justify-content-center">
-                            Go Back.
+                            className="linkButton text-info d-flex align-items-center justify-content-center fw-bold">
+                            Go Back
                         </span>
                     </Col>
                 </Row>

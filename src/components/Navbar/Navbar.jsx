@@ -25,7 +25,7 @@ const MyNavBar = () => {
         <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark" className="border-bottom border-warning">
             <Navbar.Brand
                 onClick={() => navigate("/welcome")}
-                className="nameNavBar text-danger ms-2 ">
+                className="nameNavBar text-danger ms-2 fw-bold linkButton">
                 MJÖLNIR CAPITAL
             </Navbar.Brand>
             <Container>

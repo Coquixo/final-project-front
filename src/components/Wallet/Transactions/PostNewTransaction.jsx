@@ -14,7 +14,7 @@ const ExecuteNewTransaction = () => {
     const [senderEmail, setSenderEmail] = useState(email);
     const [addresseeEmail, setAddresseeEmail] = useState("");
     const [moneyToSend, setMoneyToSend] = useState(0);
-    const navigate = useNavigate()
+    const navigate = useNavigate();
 
     const [userError, setUserError] = useState({
         senderError: "",
@@ -29,7 +29,8 @@ const ExecuteNewTransaction = () => {
     };
 
     const moneyToSendHandler = (e) => {
-        setMoneyToSend(e.target.value);
+
+        setMoneyToSend(Math.abs(e.target.value));
     };
 
     const errorHandler = (field, value, type) => {
@@ -44,14 +45,18 @@ const ExecuteNewTransaction = () => {
     const executeNewTransactionRequest = async () => {
         if (state === 2) {
             setUserError({
-                senderError: "Your account has been disabled, please contact us."
-            })
-            return
+                senderError: "Your account has been disabled, please contact us.",
+            });
+            return;
         }
 
-        let response = await executeTransactionByEmail(senderEmail, addresseeEmail, moneyToSend);
+        let response = await executeTransactionByEmail(
+            senderEmail,
+            addresseeEmail,
+            moneyToSend
+        );
         setTimeout(() => {
-            navigate("/balances ")
+            navigate("/balances ");
         }, 500);
     };
 
@@ -72,7 +77,10 @@ const ExecuteNewTransaction = () => {
                                     errorHandler(e.target.name, e.target.value, "email")
                                 }
                             />
-                            <span className="errorHandlerDesign"> {userError.senderError}</span>
+                            <span className="errorHandlerDesign">
+                                {" "}
+                                {userError.senderError}
+                            </span>
                         </>
                     ) : (
                         <> {email}</>
@@ -91,7 +99,9 @@ const ExecuteNewTransaction = () => {
                     />
                     {userError.addresseeError !== "" ? (
                         <Form.Text className="text-danger errorHandlerDesign">
-                            <span className="errorHandlerDesign">{userError.addresseeError}</span>
+                            <span className="errorHandlerDesign">
+                                {userError.addresseeError}
+                            </span>
                         </Form.Text>
                     ) : undefined}
                 </Form.Group>
@@ -100,7 +110,7 @@ const ExecuteNewTransaction = () => {
                     <Form.Control
                         type="number"
                         name="Quantity"
-                        placeholder="€"
+                        placeholder="Max 10.000€"
                         max={10000}
                         min={0}
                         onChange={moneyToSendHandler}
