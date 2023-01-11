@@ -41,7 +41,7 @@ const Balances = () => {
     return (
         <div className="vh-100 bg-dark d-flex flex-column ">
             <MyNavBar />
-            <Container fluid className="bg-dark" >
+            <Container fluid className="bg-dark">
                 <Row className="bg-dark text-danger">
                     <Col>TOTAL BALANCE: {totalBalance}€</Col>
                 </Row>
@@ -66,7 +66,7 @@ const Balances = () => {
                 <Row className="align-items-center bg-dark text-light mx-2">
                     <Col className="text-info h5">Credit Options</Col>
                     <Col xl={8}>
-                        <Row fluid="true" className="border rounded my-2 py-2" >
+                        <Row fluid="true" className="border rounded my-2 py-2">
                             {creditBalances === null ? (
                                 <CreateWallet name={"credit"} cardId={1} userId={userId} />
                             ) : (
@@ -87,7 +87,9 @@ const Balances = () => {
                                     </Col>
                                     <Col
                                         className="align-items-center d-flex justify-content-center pt-1"
-                                        sm={6} md={6} xl={6}>
+                                        sm={6}
+                                        md={6}
+                                        xl={6}>
                                         <Form.Control
                                             type="number"
                                             max={10000}
@@ -148,7 +150,7 @@ const Balances = () => {
                         fluid
                         xl={8}
                         className="d-flex justify-content-center align-items-center bg-secondary text-light border-dark border rounded">
-                        <span>
+                        <span className="p-3">
                             Mjölnir Capital is a new project based on solving every person
                             finance day-to-day main problem, counting cents. We don't like do
                             that and you neither so we decided to create a platform where your
