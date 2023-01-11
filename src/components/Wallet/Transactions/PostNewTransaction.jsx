@@ -101,6 +101,8 @@ const ExecuteNewTransaction = () => {
                         type="number"
                         name="Quantity"
                         placeholder="€"
+                        max={10000}
+                        min={0}
                         onChange={moneyToSendHandler}
                     />
                 </Form.Group>
