@@ -29,7 +29,6 @@ const ExecuteNewTransaction = () => {
     };
 
     const moneyToSendHandler = (e) => {
-
         setMoneyToSend(Math.abs(e.target.value));
     };
 
@@ -77,14 +76,17 @@ const ExecuteNewTransaction = () => {
                                     errorHandler(e.target.name, e.target.value, "email")
                                 }
                             />
-                            <span className="errorHandlerDesign">
-                                {" "}
-                                {userError.senderError}
-                            </span>
                         </>
                     ) : (
                         <> {email}</>
                     )}
+                    {userError.senderError !== "" ?
+                        <Form.Text className="errorHandlerDesgn">
+                            <span className="errorHandlerDesign">
+                                {userError.senderError}
+                            </span>
+                        </Form.Text>
+                        : undefined}
                 </Form.Group>
                 <Form.Group className="mt-1">
                     <Form.Label>Addressee:</Form.Label>

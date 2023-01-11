@@ -78,12 +78,12 @@ const Transactions = () => {
                                             <Row className="text-warning border border-top-0 border-start-0 border-end-0">
                                                 Transaction {index + 1}
                                             </Row>
-                                            <Row>Sender's Wallet Id:{transaction.sender_wallet}</Row>
+                                            <Row>Sender's email: {transaction.sender.User.email}</Row>
                                             <Row>
-                                                Addressee Wallet Id:{transaction.addressee_wallet}
+                                                Addressee email: {transaction.addressee.User.email}
                                             </Row>
-                                            <Row>Quantity:{transaction.quantity}</Row>
-                                            <Row>Date:{transaction.createdAt}</Row>
+                                            <Row>Quantity: {transaction.quantity}</Row>
+                                            <Row>Date: {transaction.createdAt}</Row>
                                         </Col>
                                     );
                                 })}
