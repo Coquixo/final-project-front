@@ -17,26 +17,31 @@ const Login = () => {
         email: "",
         password: "",
     });
-
-    const [userError, setUserError] = useState({
+    const emptyUserError = {
         emailError: "",
         passwordError: "",
-    });
+        loginAttempt: "",
+    }
+
+    const [userError, setUserError] = useState(emptyUserError);
+
+
 
     const inputHandler = (e) => {
         setUser((prevState) => ({
             ...prevState,
             [e.target.name]: e.target.value,
         }));
+        setUserError(emptyUserError)
     };
 
     const errorHandler = (field, value, type) => {
         let error = "";
         error = errorCheck(value, type);
-        setUserError((prevState) => ({
-            ...prevState,
+        setUserError({
+            ...userError,
             [field + "Error"]: error,
-        }));
+        });
     };
 
     useEffect(() => {
@@ -48,17 +53,21 @@ const Login = () => {
     const loginTry = async () => {
         if (
             userError.emailError !== "" ||
-            userError.passwordError !== ""
+            userError.passwordError !== "" ||
+            userError.loginAttempt !== ""
         ) {
             return;
         }
 
-
-        let res = await loginApi(user);
-        dispatch(login({ credentials: res }));
-        setTimeout(() => {
-            navigate("/balances");
-        }, 500);
+        try {
+            let res = await loginApi(user);
+            dispatch(login({ credentials: res }));
+            setTimeout(() => {
+                navigate("/balances");
+            }, 500);
+        } catch (error) {
+            setUserError({ ...userError, loginAttempt: "Wrong credentials" });
+        }
     };
 
     const togglePassword = () => {
@@ -107,8 +116,10 @@ const Login = () => {
                             <Form.Text className="text-danger errorHandlerDesign ">
                                 <span>{userError.emailError}</span>
                                 <span>{userError.passwordError}</span>
+                                <span>{userError.loginAttempt}</span>
                             </Form.Text>
                         </Form.Group>
+
                         <Button className="my-2 submitButton" onClick={() => loginTry()}>
                             SUBMIT
                         </Button>

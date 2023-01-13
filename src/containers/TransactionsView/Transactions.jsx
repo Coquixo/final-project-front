@@ -8,6 +8,7 @@ import {
 import { userData } from "../../services/slices/userSlice";
 import { useNavigate } from "react-router";
 import ExecuteNewTransaction from "../../components/Wallet/Transactions/PostNewTransaction";
+import dateFormat from "../../services/dateFormat";
 
 const Transactions = () => {
     const navigate = useNavigate();
@@ -30,7 +31,7 @@ const Transactions = () => {
     };
     return (
         <div className="vh-100 bg-dark">
-            <Container fluid>
+            <Container fluid className="bg-dark ">
                 <Row className="bg-dark py-2">
                     <Col className="border-bottom square border-danger">
                         <span
@@ -68,22 +69,36 @@ const Transactions = () => {
                         </Col>
                     ) : undefined}
                 </Row>
-                <Row>
-                    <Col className="bg-dark text-light">
+                <Row className="mx-2">
+                    <Col className="bg-dark text-light" xl={6}>
+                        {" "}
+                        <ExecuteNewTransaction />
+                    </Col>
+                    <Col className="bg-dark text-light " xl={6}>
                         {transactionsData.length !== 0 ? (
                             <Row>
                                 {transactionsData.map((transaction, index) => {
                                     return (
-                                        <Col key={index} sm={6} className="p-5 border rounded ">
-                                            <Row className="text-warning border border-top-0 border-start-0 border-end-0">
-                                                Transaction {index + 1}
+                                        <Col key={index} sm={12} className="px-5 py-3 border rounded m-1">
+                                            <Row className="text-warning border border-top-0 border-start-0 border-end-0  mb-2">
+                                                <Col>Transaction {index + 1}</Col>
+                                                <Col>{dateFormat(transaction.createdAt)}</Col>
                                             </Row>
-                                            <Row>Sender's email: {transaction.sender.User.email}</Row>
-                                            <Row>
-                                                Addressee email: {transaction.addressee.User.email}
-                                            </Row>
-                                            <Row>Quantity: {transaction.quantity}</Row>
-                                            <Row>Date: {transaction.createdAt}</Row>
+                                            {userRole === 1 ? (
+                                                <>
+                                                    <Row className="fw-bold">{transaction.quantity} €</Row>
+                                                    <Row>Sender: {transaction.sender.User.email}</Row>
+                                                    <Row>
+                                                        Addressee: {transaction.addressee.User.email}
+                                                    </Row>
+                                                </>
+                                            ) : (
+                                                <Row>
+                                                    <Col className="fw-bold">{transaction.quantity} €</Col>
+                                                    <Col>{transaction.addressee.User.email}</Col>
+                                                </Row>
+                                            )}
+                                            <Row> </Row>
                                         </Col>
                                     );
                                 })}
@@ -92,10 +107,7 @@ const Transactions = () => {
                             "There is no transaction yet in here"
                         )}
                     </Col>
-                    <Col className="bg-dark text-light ">
-                        {" "}
-                        <ExecuteNewTransaction />
-                    </Col>
+
                 </Row>
             </Container>
         </div>

@@ -19,7 +19,7 @@ const Register = () => {
     const [userError, setUserError] = useState({
         nameError: "",
         emailError: "",
-        ageError: undefined,
+        ageError: "",
         passwordError: "",
     });
 
@@ -33,27 +33,32 @@ const Register = () => {
     const errorHandler = (field, value, type) => {
         let error = "";
         error = errorCheck(value, type);
-        setUserError((prevState) => ({
-            ...prevState,
+        setUserError({
+            ...userError,
             [field + "Error"]: error,
-        }));
+        });
     };
 
+
+
     const registerTry = async () => {
+
         if (
             userError.nameError !== "" ||
             userError.emailError !== "" ||
             userError.ageError !== "" ||
             userError.passwordError !== ""
         ) {
-            return;
+            return
         }
-        let res = await registerApi(user);
 
-        if (res.message === "User created successfully") {
-            setTimeout(() => {
-                navigate("/welcome");
-            }, 500);
+
+        try {
+            let res = await registerApi(user);
+
+            navigate("/welcome");
+        } catch (error) {
+            setUserError({ ...userError, ["emailError"]: error.response.data.error });
         }
     };
 
