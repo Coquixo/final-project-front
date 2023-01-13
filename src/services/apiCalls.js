@@ -1,6 +1,7 @@
 import axios from "axios";
 
-const database = "http://localhost:5000";
+//Change To https://master.d3fws9ljq1bmzm.amplifyapp.com/
+const database = "https://final-project-back-production.up.railway.app";
 
 export const loginApi = async (user) => {
   let res = await axios.post(database + "/auth/login", user);
