@@ -14,7 +14,7 @@ const Home = () => {
     });
 
     return (
-        <div className="bg-dark ">
+        <div className="bg-dark vh-100">
             <Container fluid>
                 <Row className="homeTitle bg-dark text-center">
                     <div onClick={() => { navigate("/welcome") }}>MJÖLNIR CAPITAL</div>
@@ -22,9 +22,9 @@ const Home = () => {
             </Container>
             <div className="centeredDiv ">
                 <Container>
-                    <Row className="homeMainBox ">
+                    <Row className="homeMainBox">
                         <Col className="bg-dark "></Col>
-                        <Col className="bg-light border border-2 rounded border-danger" sm={6}>
+                        <Col className="bg-light border border-2 rounded border-danger" sm={12} xl={6}>
                             {loginForm ? <Login /> : <Register />}
                         </Col>
                         <Col className="bg-dark"></Col>
