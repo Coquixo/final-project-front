@@ -79,14 +79,19 @@ const Transactions = () => {
                             <Row>
                                 {transactionsData.map((transaction, index) => {
                                     return (
-                                        <Col key={index} sm={12} className="px-5 py-3 border rounded m-1">
+                                        <Col
+                                            key={index}
+                                            sm={12}
+                                            className="px-5 py-3 border rounded m-1">
                                             <Row className="text-warning border border-top-0 border-start-0 border-end-0  mb-2">
                                                 <Col>Transaction {index + 1}</Col>
                                                 <Col>{dateFormat(transaction.createdAt)}</Col>
                                             </Row>
                                             {userRole === 1 ? (
                                                 <>
-                                                    <Row className="fw-bold">{transaction.quantity} €</Row>
+                                                    <Row className="fw-bold">
+                                                        {transaction.quantity} €
+                                                    </Row>
                                                     <Row>Sender: {transaction.sender.User.email}</Row>
                                                     <Row>
                                                         Addressee: {transaction.addressee.User.email}
@@ -94,7 +99,9 @@ const Transactions = () => {
                                                 </>
                                             ) : (
                                                 <Row>
-                                                    <Col className="fw-bold">{transaction.quantity} €</Col>
+                                                    <Col className="fw-bold">
+                                                        {transaction.quantity} €
+                                                    </Col>
                                                     <Col>{transaction.addressee.User.email}</Col>
                                                 </Row>
                                             )}
@@ -107,7 +114,6 @@ const Transactions = () => {
                             "There is no transaction yet in here"
                         )}
                     </Col>
-
                 </Row>
             </Container>
         </div>

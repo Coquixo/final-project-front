@@ -17,21 +17,23 @@ export const registerApi = async (user) => {
 
 //Get all users
 
-export const getAllUsers = async () => {
-  let res = await axios.get(`/user/all`);
+export const getAllUsers = async (token) => {
+  let res = await axios.get(`${database}/user/all`, {
+    headers: { Authorization: `Bearer ${token}` },
+  });
   return res.data;
 };
 
 //Get user's status(admin)
 export const getUsersStatus = async (email) => {
-  let res = await axios.get(`/user/${email}/status`);
+  let res = await axios.get(`${database}/user/${email}/status`);
   return res.data;
 };
 
 //Update user's status(admin)
 //User stands for the body(StatusId) to change, email for the target
 export const updateUserStatus = async (email, user) => {
-  let res = await axios.put(`/user/${email}/status`, user);
+  let res = await axios.put(`${database}/user/${email}/status`, user);
   return res.data;
 };
 
