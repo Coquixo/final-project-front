@@ -44,23 +44,32 @@ Futhermore the web is movile responsive
 
 ## Repositories
 
-[Front End](https://github.com/Coquixo/final-project-front)
+> [Front End](https://github.com/Coquixo/final-project-front)
 
-[Back End](https://github.com/Coquixo/final-project-back)
+> [Back End](https://github.com/Coquixo/final-project-back)
 
 ---
 
 ## Views
 
-Welcome View
+> Welcome View
+
 <img src="./images/Welcome.png" />
-Login / Register View
+
+> Login / Register View
+
 <img src="./images/Login.png" />
-Balances View
+
+> Balances View
+
 <img src="./images/Balances.png" />
-Profile View
+
+> Profile View
+
 <img src="./images/Profile.png" />
-Transactions View
+
+> Transactions View
+
 <img src="./images/Transactions.png" />
 
 ## Technologies, dependencies and libraries
@@ -88,10 +97,10 @@ Back End:
 
 ## Authors
 
-Alex Marcelo López Quiroga
+> **Alex Marcelo López Quiroga**
 
-- [Linked In](https://www.linkedin.com/in/alex-marcelo-l%C3%B3pez-quiroga-05a7b2194/)
-- [Github](https://github.com/Coquixo)
+> [Github](https://github.com/Coquixo)🚀
+> [LinkedIn](https://www.linkedin.com/in/alex-marcelo-lopez-quiroga5555/)🍀
 
 ---
 
