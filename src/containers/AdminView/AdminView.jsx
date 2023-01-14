@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Col, Container, Row } from "react-bootstrap";
+import { Button, Col, Container, Form, Row } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { getAllUsers } from "../../services/apiCalls";
@@ -42,17 +42,26 @@ const AdminView = () => {
                                         key={index}
                                         sm={12}>
                                         <Row>
-                                            <Col className="text-warning fw-bold">User {index + 1}</Col>
+                                            <Col className="text-warning fw-bold">
+                                                User {index + 1}
+                                            </Col>
                                         </Row>
                                         <Row>ID:{newUser.id}</Row>
                                         <Row>NAME: {newUser.name}</Row>
-                                        <Row>SURNAME: {newUser.surname}</Row>
+                                        <Row>SURNAME: {newUser.surname !== null ? newUser.surname : "No value set yet."}</Row>
+                                        <Row>EMAIL: {newUser.email}</Row>
                                         <Row>AGE: {newUser.age}</Row>
-                                        <Row>COUNTRY: {newUser.country}</Row>
-                                        <Row>CITY: {newUser.city}</Row>
-                                        <Row>ADDRESS: {newUser.address}</Row>
+                                        <Row>COUNTRY: {newUser.country !== null ? newUser.country : "No value set yet."}</Row>
+                                        <Row>CITY: {newUser.city !== null ? newUser.city : "No value set yet."}</Row>
+                                        <Row>ADDRESS: {newUser.address !== null ? newUser.address : "No value set yet."}</Row>
                                         <Row>ROLE: {newUser.RoleId}</Row>
                                         <Row>STATUS: {newUser.StateId}</Row>
+                                        <br />
+                                        <Row className="text-danger">ADMIN INFO</Row>
+                                        <Row>Role 1: admin</Row>
+                                        <Row>Role 2: client</Row>
+                                        <Row>Status 1: Active</Row>
+                                        <Row>Status 2: Disabled</Row>
                                     </Col>
                                 );
                             })}
@@ -66,8 +75,8 @@ const AdminView = () => {
                         </Row>
                     </Col>
                 </Row>
-            </Container>
-        </div>
+            </Container >
+        </div >
     );
 };
 
