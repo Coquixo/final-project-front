@@ -7,7 +7,7 @@
 
 ---
 
-##Deployment
+## Deployment
 
 https://master.d3fws9ljq1bmzm.amplifyapp.com/welcome
 
@@ -45,6 +45,7 @@ Futhermore the web is movile responsive
 ## Repositories
 
 [Front End](https://github.com/Coquixo/final-project-front)
+
 [Back End](https://github.com/Coquixo/final-project-back)
 
 ---
