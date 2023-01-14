@@ -1,70 +1,103 @@
-# Getting Started with Create React App
+# MJÖLNIR CAPITAL
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## General Information
 
-## Available Scripts
+> <h6> This project is the BackEnd part from a ReactJs made Bank page webside.</h6>
+> <p>Mjölnir capital tries to simplify transactions between it's users.</p>
 
-In the project directory, you can run:
+---
 
-### `npm start`
+##Deployment
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+https://master.d3fws9ljq1bmzm.amplifyapp.com/welcome
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+---
 
-### `npm test`
+## Appendix
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Some of the funcionalities are:
 
-### `npm run build`
+- Register / Log In
+- Create new wallet with credit/debit card
+- Add and Withdraw Money
+- Update profile
+- Check your transactions
+- Make a new transaction to someone's credit card
+- Bring all transactions users (as an admin
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Futhermore the web is movile responsive
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+---
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Table of content
 
-### `npm run eject`
+- [Mjölnir Capital](#mjölnir-capital)
+- [General Information](#general-information)
+- [Appendix](#appendix)
+- [Repositories](#repositories)
+- [Views](#views)
+- [Technologies](#technologies-dependencies-and-libraries)
+- [Authors](#authors)
+- [Badges](#badges)
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+---
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Repositories
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+[Front End](https://github.com/Coquixo/final-project-front)
+[Back End](https://github.com/Coquixo/final-project-back)
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+---
 
-## Learn More
+## Views
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Welcome View
+<img src="./images/Welcome.png" />
+Login / Register View
+<img src="./images/Login.png" />
+Balances View
+<img src="./images/Balances.png" />
+Profile View
+<img src="./images/Profile.png" />
+Transactions View
+<img src="./images/Transactions.png" />
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Technologies, dependencies and libraries
 
-### Code Splitting
+Front End:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+- [HTML5](https://html5.org/)
+- [SCSS](https://sass-lang.com/)
+- [CSS3](https://developer.mozilla.org/en-US/docs/Web/CSS)
+- [JavaScript](https://www.javascript.com/)
+- [ReactJS](https://es.reactjs.org/)
+- [Redux](https://redux.js.org//)
 
-### Analyzing the Bundle Size
+Back End:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+- [JavaScript](https://www.javascript.com/)
+- [Node](https://nodejs.org/en/)
+- [Express](https://expressjs.com/)
+- [Sequelize](https://sequelize.org/)
+- [Bcryptt](https://www.npmjs.com/package/bcrypt)
+- [Axios](https://axios-http.com//)
+- [MySQL](https://www.mysql.com/)
 
-### Making a Progressive Web App
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+## Authors
 
-### Advanced Configuration
+Alex Marcelo López Quiroga
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+- [Linked In](https://www.linkedin.com/in/alex-marcelo-l%C3%B3pez-quiroga-05a7b2194/)
+- [Github](https://github.com/Coquixo)
 
-### Deployment
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+## Badges
 
-### `npm run build` fails to minify
+[![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](https://choosealicense.com/licenses/mit/)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+---
+
+[BackToTop](#appendix)
