@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { Button, Col, Container, Form, Row } from "react-bootstrap";
+import React, { useEffect, useState } from "react";
+import { Col, Container, Row } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { getAllUsers } from "../../services/apiCalls";
@@ -11,16 +11,17 @@ const AdminView = () => {
     const userReduxCredentials = useSelector(userData);
     const userRole = userReduxCredentials.credentials.role;
     const userToken = userReduxCredentials.credentials.token;
-
-    const giveUsersHandler = () => {
+    useEffect(() => {
+        if (userRole !== 1) {
+            navigate("/balances")
+        }
         getAllUsers(userToken)
             .then((user) => {
                 setNewUserData(user.data);
             })
             .catch((error) => {
-                console.log(error);
             });
-    };
+    }, []);
 
     return (
         <div className="vh-100 bg-dark">
@@ -48,12 +49,32 @@ const AdminView = () => {
                                         </Row>
                                         <Row>ID:{newUser.id}</Row>
                                         <Row>NAME: {newUser.name}</Row>
-                                        <Row>SURNAME: {newUser.surname !== null ? newUser.surname : "No value set yet."}</Row>
+                                        <Row>
+                                            SURNAME:{" "}
+                                            {newUser.surname !== null
+                                                ? newUser.surname
+                                                : "No value set yet."}
+                                        </Row>
                                         <Row>EMAIL: {newUser.email}</Row>
                                         <Row>AGE: {newUser.age}</Row>
-                                        <Row>COUNTRY: {newUser.country !== null ? newUser.country : "No value set yet."}</Row>
-                                        <Row>CITY: {newUser.city !== null ? newUser.city : "No value set yet."}</Row>
-                                        <Row>ADDRESS: {newUser.address !== null ? newUser.address : "No value set yet."}</Row>
+                                        <Row>
+                                            COUNTRY:{" "}
+                                            {newUser.country !== null
+                                                ? newUser.country
+                                                : "No value set yet."}
+                                        </Row>
+                                        <Row>
+                                            CITY:{" "}
+                                            {newUser.city !== null
+                                                ? newUser.city
+                                                : "No value set yet."}
+                                        </Row>
+                                        <Row>
+                                            ADDRESS:{" "}
+                                            {newUser.address !== null
+                                                ? newUser.address
+                                                : "No value set yet."}
+                                        </Row>
                                         <Row>ROLE: {newUser.RoleId}</Row>
                                         <Row>STATUS: {newUser.StateId}</Row>
                                         <br />
@@ -66,17 +87,10 @@ const AdminView = () => {
                                 );
                             })}
                         </Row>
-                        <Row fluid className="d-flex justify-content-center">
-                            <Col className="bg-danger text-light ">
-                                <span onClick={giveUsersHandler} className="linkButton">
-                                    Click on here to see all users
-                                </span>
-                            </Col>
-                        </Row>
                     </Col>
                 </Row>
-            </Container >
-        </div >
+            </Container>
+        </div>
     );
 };
 

@@ -6,6 +6,7 @@ import AddWithdrawMoney from "../../components/Wallet/WalletForm/AddWithdrawMone
 import CreateWallet from "../../components/Wallet/WalletForm/CreateWalletForm";
 import { getWalletBalance } from "../../services/apiCalls";
 import { userData } from "../../services/slices/userSlice";
+import { useNavigate } from "react-router-dom";
 import "./Balances.scss";
 
 const Balances = () => {
@@ -16,8 +17,14 @@ const Balances = () => {
     const [moneyToChangeCredit, setMoneyToChangeCredit] = useState(0);
     const [moneyToChangeDebit, setMoneyToChangeDebit] = useState(0);
     const userId = userReduxCredentials.credentials.id;
+    const navigate = useNavigate()
 
     useEffect(() => {
+        if (userReduxCredentials.credentials.token === undefined) {
+            navigate("/")
+        }
+
+
         if (creditBalances.length === 0) {
             getWalletBalance(userId, 1).then((balances) => {
                 setCreditBalances(balances.data);

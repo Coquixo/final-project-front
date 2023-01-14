@@ -111,7 +111,7 @@ const Transactions = () => {
                                 })}
                             </Row>
                         ) : (
-                            "There is no transaction yet in here"
+                            "There is no transaction yet in here. Try click above button!"
                         )}
                     </Col>
                 </Row>

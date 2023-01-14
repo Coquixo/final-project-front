@@ -23,6 +23,10 @@ const Register = () => {
         passwordError: "",
     });
 
+    const [message, setMessage] = useState({
+        true: ""
+    })
+
     const inputHandler = (e) => {
         setUser((prevState) => ({
             ...prevState,
@@ -54,9 +58,12 @@ const Register = () => {
 
 
         try {
-            let res = await registerApi(user);
+            let res = await registerApi(user).then((res) => setMessage({ ...message, ["true"]: res.message }))
 
-            navigate("/welcome");
+            setTimeout(() => {
+
+                navigate("/welcome");
+            }, 2000);
         } catch (error) {
             setUserError({ ...userError, ["emailError"]: error.response.data.error });
         }
@@ -127,6 +134,8 @@ const Register = () => {
                                 <EyeIcon onClick={togglePassword} />
                             )}
                             <Form.Text className="text-danger errorHanlderDesign d-flex flex-column">
+
+                                <span>{message.true}</span>
                                 <span>{userError.nameError}</span>
                                 <span>{userError.emailError}</span>
                                 <span>{userError.passwordError}</span>

@@ -1,11 +1,19 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Row, Container, Col } from "react-bootstrap";
 import { useNavigate } from "react-router";
 import UpdateMyProfile from "../../components/UpdateProfile/UpdateMyProfile";
+import { userData } from "../../services/slices/userSlice";
+import { useSelector } from "react-redux";
 import "./Profile.scss";
-
 const Profile = () => {
     const navigate = useNavigate();
+    const userReduxCredentials = useSelector(userData)
+
+    useEffect(() => {
+        if (userReduxCredentials.credentials.token === undefined) {
+            navigate("/")
+        }
+    })
 
     return (
         <div className="vh-100 bg-black">
