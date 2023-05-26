@@ -9,7 +9,7 @@ export const errorCheck = (value, type) => {
 
     case "email":
       if (
-        !/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(
+        !/^(([^<>()[]\\.,;:\s@"]+(\.[^<>()[]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(
           value
         )
       ) {
@@ -25,6 +25,7 @@ export const errorCheck = (value, type) => {
       if (value < 18) {
         return "*You must be an adult >18";
       }
+      break; // Add a break statement here
 
     case "phone":
       if (!/(?=.*?[0-9])/.test(value)) {
@@ -34,10 +35,11 @@ export const errorCheck = (value, type) => {
       }
 
     case "password":
-      if (value.length < 7) {
+      if (value.length < 8) {
+        // Updated the minimum length to 8
         return "*Write at least 8 characters";
       } else {
-        //Checking the password format....
+        // Checking the password format....
 
         if (!/[\d()+-]/g.test(value)) {
           return "*Write at least one number, one lowercase letter, and one uppercase letter.";
@@ -48,6 +50,7 @@ export const errorCheck = (value, type) => {
 
     case "credentials":
       return "*Wrong email or password";
+
     case "address":
       if (
         !/[a-zA-Z0-9]/gi.test(
@@ -61,7 +64,6 @@ export const errorCheck = (value, type) => {
 
     default:
       console.log("*Some errors have not been taken into account");
-
       break;
   }
 };
